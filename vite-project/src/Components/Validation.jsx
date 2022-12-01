@@ -29,8 +29,8 @@ const Validation = () => {
 
 
   const schema = yup.object({
-    Review: yup.string().required(),
-    Name: yup.string().required().min(2).max(15),
+    comment: yup.string().required(),
+    Author: yup.string().required().min(2).max(15),
     Rating: yup.number().positive().integer().required(),
   }).required();
 
@@ -42,7 +42,7 @@ const Validation = () => {
   const onSubmit =(data)=>{
     // props.updateAction(data)
     console.log(data)
-    alert(data)
+    alert(JSON.stringify(data))
   };
 
 
@@ -65,13 +65,13 @@ const Validation = () => {
 
 
     <label for="exampleInputPassword1" className="form-label">Your Name</label>
-    <input     {...register("Name")}  type="text" placeholder={"Your Name"} className="form-control" id="exampleInputPassword1"/>
-    <p style={{color:"red"}}>{errors.Name?.message}</p>
+    <input     {...register("Author")}  type="text" placeholder={"Your Name"} className="form-control" id="exampleInputPassword1"/>
+    <p style={{color:"red"}}>{errors.Author?.message}</p>
   </div>
   <label>Review</label>
   <div className="mb-3">
-  <textarea {...register("Review")}  rows="4" cols="50" placeholder={"Write your review"}></textarea> 
-  <p style={{color:"red"}}>{errors.Review?.message}</p>
+  <textarea {...register("comment")}  rows="4" cols="50" placeholder={"Write your review"}></textarea> 
+  <p style={{color:"red"}}>{errors.comment?.message}</p>
   </div>
   <div className="mb-3 form-check">
     <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
